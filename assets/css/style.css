@@ -1,0 +1,25 @@
+header {
+    text-align: center;
+    font-size: 20px;
+}
+.underscores {
+    text-align: center;
+    font-size: 80px;
+    letter-spacing: 2px;
+}
+
+.correct, .wrong {
+    width: 36%;
+    margin: 25px;
+    padding: 25px;
+    border-radius: 10px;
+}
+.correct {
+    background: rgb(130, 233, 130);
+    float: left;
+}
+
+.wrong {
+    background: rgb(248, 128, 128);
+    float: right;
+}
