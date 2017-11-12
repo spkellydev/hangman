@@ -8,6 +8,9 @@ let _ = [];
 let correct = [];
 let wrong = [];
 let underscores = document.querySelector('.underscores');
+let correctBlock = document.querySelector('.correct');
+let wrongBlock = document.querySelector('.wrong');
+let scoreBlock = document.querySelector('#score');
 
 console.log(chosen);
 
@@ -29,6 +32,8 @@ document.addEventListener('keypress', (e) => {
         correct.indexOf(letter) === -1 ? correct.push(letter) : console.log('already guessed')
         //replace underscore with letter
         _[chosen.indexOf(letter)] = letter;
+        correctBlock.innerHTML = correct;
+        
         console.log(`%c Correct: ${correct} `, 'background: #d2232a; color: #bada55');
         console.log(_)
  
@@ -39,7 +44,12 @@ document.addEventListener('keypress', (e) => {
         }
     } else {
         //push to the wrong word array
-        wrong.indexOf(letter) === -1 ? wrong.push(letter) : console.log('already guessed')        
+        wrong.indexOf(letter) === -1 ? wrong.push(letter) : console.log('already guessed');
+        wrongBlock.innerHTML = wrong;
+        if (wrong.length > 10) {
+            alert('You lose, motherfucker!')
+        }
+        scoreBlock.innerHTML = 10 - wrong.length;
         console.log(`%c Wrong: ${wrong}`, 'background: #bada55; color: #d2232a');
     }
 })
