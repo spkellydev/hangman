@@ -21,7 +21,7 @@ while (count > 0) {
 
 //replace the target with a comma replaced joined array
 function commaReplace(t) {
-    return (t.join()).replace(/,/g,' ');
+    return (t.join()).replace(/,/g,'');
 }
 
 //push underscores to the front end
@@ -62,15 +62,15 @@ document.addEventListener('keypress', (e) => {
         
         //replace underscore with letter
         
-        _[chosen.indexOf(letter)] = correct.indexOf(letter);
+        _[chosen.charAt(letter)] = letter;
         correctBlock.innerHTML = commaReplace(correct);
         
         console.log(`%c Correct: ${correct} `, 'background: #d2232a; color: #bada55');
         console.log(_)
  
-        underscores.innerHTML = commaReplace(_);
+        underscores.innerHTML = commaReplace(correct);
         //compare the length of correct letters and the count of chosen letters
-        if (correct.length == chosen.length) {
+        if (commaReplace(correct).length == chosen.length) {
             alert('You win!');
             location.reload();
         }
