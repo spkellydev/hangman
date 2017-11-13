@@ -1,5 +1,5 @@
 // create an array of words 
-const words = ['line', 'block', 'tshape', 'wall', 'tetris', 'ham'];
+const words = ['purple', 'letter', 'snailly', 'purple', 'sock', 'ham', 'goldfish', 'chocolate'];
 // choose word randomly
 let chosen = words[Math.floor(Math.random() * words.length)];
 let count = chosen.length;
@@ -18,8 +18,30 @@ while (count > 0) {
     _.push('_');
     count--;
 }
+
+//replace the target with a comma replaced joined array
+function commaReplace(t) {
+    return (t.join()).replace(/,/g,' ');
+}
+
 //push underscores to the front end
-underscores.innerHTML = (_.join()).replace(/,/g,' ');
+underscores.innerHTML = commaReplace(_);
+
+
+function checkLetter(letter) {
+    for (var i = 0; i < chosen.length; i++) {
+        if(letter == chosen.charAt(i)) {
+            //you guessed right!
+            correct[i] = letter;
+            _[chosen.charAt(i)] = correct;
+        }
+        else {
+            //you guessed wrong :(
+            
+        }
+    }
+    console.log(correct)
+}
 
 // get users guess 
 document.addEventListener('keypress', (e) => {
@@ -29,28 +51,39 @@ document.addEventListener('keypress', (e) => {
     if (chosen.indexOf(letter) > -1) {
         //push to the correct array
         //need to check if letter exists in word twice
-        correct.indexOf(letter) === -1 ? correct.push(letter) : console.log('already guessed')
+        
+        //correct.indexOf(letter) === -1 ? correct.push(letter) : console.log('already guessed');
+        checkLetter(letter);
+        // for (var k =0; k < chosen.length; k++) {
+        //     if ( == correct.indexOf(letter)) {
+        //         console.log('heyyyy')
+        //     }
+        // }
+        
         //replace underscore with letter
-        _[chosen.indexOf(letter)] = letter;
-        correctBlock.innerHTML = correct;
+        
+        _[chosen.indexOf(letter)] = correct.indexOf(letter);
+        correctBlock.innerHTML = commaReplace(correct);
         
         console.log(`%c Correct: ${correct} `, 'background: #d2232a; color: #bada55');
         console.log(_)
  
-        underscores.innerHTML = (_.join()).replace(/,/g,' ');
+        underscores.innerHTML = commaReplace(_);
         //compare the length of correct letters and the count of chosen letters
         if (correct.length == chosen.length) {
             alert('You win!');
+            location.reload();
         }
     } else {
         //push to the wrong word array
         wrong.indexOf(letter) === -1 ? wrong.push(letter) : console.log('already guessed');
-        wrongBlock.innerHTML = wrong;
-        if (wrong.length > 10) {
-            alert('You lose, motherfucker!')
-        }
+        wrongBlock.innerHTML = commaReplace(wrong);
         scoreBlock.innerHTML = 10 - wrong.length;
         console.log(`%c Wrong: ${wrong}`, 'background: #bada55; color: #d2232a');
+        if (wrong.length > 9) {
+            alert('You lose, try again!');
+            location.reload();
+        }
     }
 })
 
