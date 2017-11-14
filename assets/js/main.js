@@ -32,7 +32,7 @@ function checkLetter(letter) {
     for (var i = 0; i < chosen.length; i++) {
         if(letter == chosen.charAt(i)) {
             //you guessed right!
-            correct.indexOf(letter) === -1 ? correct.push(letter) : correct.push(' ');
+            correct.indexOf(letter) === -1 ? correct.push(letter) : correct.push(' '); //add empty space to account for correct index count
             _[i] = letter;
             console.log(_)
         } 
@@ -55,8 +55,9 @@ document.addEventListener('keypress', (e) => {
         //replace underscore with letter with commaReplace
 
         console.log(`%c Correct: ${correct} `, 'background: #d2232a; color: #bada55');
- 
+        //print remaining guess/correct guess
         underscores.innerHTML = commaReplace(checkLetter(letter));
+        //print to correct block
         correctBlock.innerHTML = commaReplace(correct);
         //compare the length of correct letters and the count of chosen letters
         if (commaReplace(correct).length == chosen.length) {
@@ -66,6 +67,7 @@ document.addEventListener('keypress', (e) => {
     } else {
         //push to the wrong word array
         wrong.indexOf(letter) === -1 ? wrong.push(letter) : console.log('already guessed');
+        //print to wrong block
         wrongBlock.innerHTML = commaReplace(wrong);
         scoreBlock.innerHTML = 10 - wrong.length;
         console.log(`%c Wrong: ${wrong}`, 'background: #bada55; color: #d2232a');
