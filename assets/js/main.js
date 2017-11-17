@@ -1,7 +1,12 @@
 // create an array of words 
-const words = ['purple', 'letter', 'snailly', 'purple', 'sock', 'ham', 'goldfish', 'chocolate'];
+const words = { 
+                words: ['purple', 'letter', 'snail', 'shark', 'sock', 'ham', 'chocolate'],
+                hints: ['color', 'part of alphabet', 'shelled insect', 'cartiliginous fish', 'on your feet', 'from a pig', 'delicious candy']
+              };
 // choose word randomly
-let chosen = words[Math.floor(Math.random() * words.length)];
+let rand = Math.floor(Math.random() * words.words.length)
+let chosen = words.words[rand];
+let chosenHint = words.hints[rand];
 let count = chosen.length;
 // create underscores based on words
 let _ = [];
@@ -12,6 +17,8 @@ let correctBlock = document.querySelector('.correct');
 let wrongBlock = document.querySelector('.wrong');
 let scoreBlock = document.querySelector('#score');
 let btn = document.querySelector('.btn');
+let hint = document.querySelector('.hint');
+hint.innerHTML = chosenHint;
 
 while (count > 0) {
     _.push('_');
@@ -71,6 +78,7 @@ document.addEventListener('keypress', (e) => {
         //compare the length of correct letters and the count of chosen letters
         if (commaReplace(correct).length == chosen.length) {
             alert('You win!');
+            setTimeout(function(){ location.reload(); }, 3000);
         }
     } else {
         //push to the wrong word array
@@ -82,6 +90,7 @@ document.addEventListener('keypress', (e) => {
         console.log(`%c Wrong: ${wrong}`, 'background: #bada55; color: #d2232a');
         if (wrong.length > 9) {
             alert('You lose, try again!');
+            setTimeout(function(){ location.reload(); }, 3000);           
         }
     }
 });

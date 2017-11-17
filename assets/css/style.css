@@ -1,3 +1,6 @@
+* {
+    box-sizing: border-box;
+}
 body {
     font-family: sans-serif;
     font-size: 20px;
@@ -14,19 +17,17 @@ header {
 }
 
 .correct, .wrong {
-    width: 36%;
-    margin: 25px;
+    max-width: 45%;
+    margin: 25px auto;
     padding: 25px;
     border-radius: 10px;
 }
 .correct {
     background: rgb(130, 233, 130);
-    float: left;
 }
 
 .wrong {
     background: rgb(248, 128, 128);
-    float: right;
 }
 
 input[type="button"] {
