@@ -3,13 +3,13 @@ function q(selector) {
     return document.querySelector(selector);
 }
 const words = { 
-                words: ['purple', 'letter', 'snail', 'shark', 'sock', 'ham', 'chocolate'],
-                hints: ['the color _ _ _ _ _ _', 'part of alphabet', 'shelled insect', 'cartiliginous fish', 'goes on your feet', 'comes from a pig', 'delicious candy'],
-                images: ['../assets/images/colorPurple.jpg']
+                words: ['The Color Purple', 'letter', 'snail', 'great white shark', 'sock', 'ham', 'chocolate'],
+                hints: ['a book by Alice Walker -- adapted for the screen by Stephen Speilberg', 'there are 26 of these in the alphabet', 'shelled insect', 'the biggest, baddest cartiliginous fish around', 'goes on your feet', 'comes from a pig', 'delicious candy'],
+                images: ['colorPurple.jpg', 'letter.jpg', 'snail.jpg','shark.jpg','sock.jpg','ham.jpg','chocolate.jpg']
               };
 // choose word randomly
 let rand = Math.floor(Math.random() * words.words.length)
-let chosen = words.words[rand];
+let chosen = words.words[rand].toLowerCase();
 let chosenHint = words.hints[rand];
 let count = chosen.length;
 // create underscores based on words
@@ -35,9 +35,12 @@ let hint = q('.hint');
 
 //push to front end
 hint.innerHTML = chosenHint;
+
+
 var node = document.createElement("IMG");
-node.src = words.images[0]; 
-blocks.img.appendChild(node); 
+node.src = '../assets/images/'+ words.images[rand];
+node.classList.add('img-responsive');
+
 
 while (count > 0) {
     score._.push('_');
@@ -119,6 +122,7 @@ function scoreBlock(state) {
 }
 
 function gameStatus(state) {
+    blocks.img.appendChild(node);
     if (state === 'win') {
         scoreBlock(state);
         blocks.subtitle.innerHTML = 'You Win!!! New Game starting soon!!';
