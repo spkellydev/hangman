@@ -1,5 +1,5 @@
 // create an array of words 
-function q(selector) {
+q = (selector) => {
     return document.querySelector(selector);
 }
 const words = { 
@@ -48,14 +48,14 @@ while (count > 0) {
 }
 
 //replace the target with a comma-replaced, joined array
-function commaReplace(t) {
+commaReplace = (t) => {
     return (t.join()).replace(/,/g,'');
 }
 
 //push underscores to the front end
 blocks.underscores.innerHTML = commaReplace(score._);
 
-function checkDuplicate (letter) {
+checkDuplicate = (letter) => {
     count = 0;
     for (var i = 0; i < chosen.length; i++) {
         if (chosen[i] == letter) {
@@ -67,7 +67,7 @@ function checkDuplicate (letter) {
     }
 }
 
-function checkLetter(letter) {
+checkLetter = (letter) => {
     for (var i = 0; i < chosen.length; i++) {
         if(letter == chosen.charAt(i)) {
             //you guessed right!
@@ -110,10 +110,10 @@ document.addEventListener('keypress', (e) => {
     }
 });
 
-function startGame() {
+startGame = () => {
     location.reload();
 }
-function scoreBlock(state) {
+scoreBlock = (stat = e) => {
     if (state === 'win') {
         return blocks.score.innerHTML = '😊';
     } else {
@@ -121,7 +121,7 @@ function scoreBlock(state) {
     }
 }
 
-function gameStatus(state) {
+gameStatus = (state) => {
     blocks.img.appendChild(node);
     if (state === 'win') {
         scoreBlock(state);
