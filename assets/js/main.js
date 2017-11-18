@@ -1,7 +1,7 @@
-// create an array of words 
 q = (selector) => {
     return document.querySelector(selector);
 }
+// create an array of words 
 const words = { 
                 words: ['The Color Purple', 'letter', 'snail', 'great white shark', 'sock', 'ham', 'chocolate'],
                 hints: ['a book by Alice Walker -- adapted for the screen by Stephen Speilberg', 'there are 26 of these in the alphabet', 'shelled insect', 'the biggest, baddest cartiliginous fish around', 'goes on your feet', 'comes from a pig', 'delicious candy'],
@@ -113,7 +113,7 @@ document.addEventListener('keypress', (e) => {
 startGame = () => {
     location.reload();
 }
-scoreBlock = (stat = e) => {
+scoreBlock = (state) => {
     if (state === 'win') {
         return blocks.score.innerHTML = '😊';
     } else {
