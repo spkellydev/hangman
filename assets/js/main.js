@@ -9,15 +9,15 @@ let chosen = words.words[rand];
 let chosenHint = words.hints[rand];
 let count = chosen.length;
 // create underscores based on words
-let _ = [];
-let correct = [];
-let wrong = [];
-let underscores = document.querySelector('.underscores');
-let correctBlock = document.querySelector('.correct');
-let wrongBlock = document.querySelector('.wrong');
-let scoreBlock = document.querySelector('#score');
-let btn = document.querySelector('.btn');
-let hint = document.querySelector('.hint');
+let _ = [],
+correct = [],
+wrong = [],
+underscores = document.querySelector('.underscores'),
+correctBlock = document.querySelector('.correct'),
+wrongBlock = document.querySelector('.wrong'),
+scoreBlock = document.querySelector('#score'),
+btn = document.querySelector('.btn'),
+hint = document.querySelector('.hint');
 hint.innerHTML = chosenHint;
 
 while (count > 0) {
@@ -25,7 +25,7 @@ while (count > 0) {
     count--;
 }
 
-//replace the target with a comma replaced joined array
+//replace the target with a comma-replaced, joined array
 function commaReplace(t) {
     return (t.join()).replace(/,/g,'');
 }
@@ -70,7 +70,7 @@ document.addEventListener('keypress', (e) => {
         
         //replace underscore with letter with commaReplace
 
-        console.log(`%c Correct: ${correct} `, 'background: #d2232a; color: #bada55');
+        //console.log(`%c Correct: ${correct} `, 'background: #d2232a; color: #bada55');
         //print remaining guess/correct guess
         underscores.innerHTML = commaReplace(checkLetter(letter));
         //print to correct block
@@ -87,7 +87,7 @@ document.addEventListener('keypress', (e) => {
         wrongBlock.innerHTML = commaReplace(wrong);
         //update scoreblock
         scoreBlock.innerHTML = 10 - wrong.length;
-        console.log(`%c Wrong: ${wrong}`, 'background: #bada55; color: #d2232a');
+        //console.log(`%c Wrong: ${wrong}`, 'background: #bada55; color: #d2232a');
         if (wrong.length > 9) {
             alert('You lose, try again!');
             setTimeout(function(){ location.reload(); }, 3000);           
